@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PluginConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SamlConfigs />
+  <OidConfigs>
+    <item>
+      <key>
+        <string>authelia</string>
+      </key>
+      <value>
+        <PluginConfiguration>
+          <SchemeOverride>https</SchemeOverride>
+          <OidEndpoint>https://auth.mgt.zachneill.com</OidEndpoint>
+          <OidClientId>jellyfin</OidClientId>
+          <OidSecret>REDACTED</OidSecret>
+          <Enabled>true</Enabled>
+          <EnableAuthorization>true</EnableAuthorization>
+          <EnableAllFolders>true</EnableAllFolders>
+          <EnabledFolders />
+          <AdminRoles>
+            <string>Jellyfin_Admins</string>
+          </AdminRoles>
+          <Roles>
+            <string>Jellyfin_Users</string>
+            <string>Jellyfin_Admins</string>
+          </Roles>
+          <EnableFolderRoles>false</EnableFolderRoles>
+          <EnableLiveTvRoles>false</EnableLiveTvRoles>
+          <EnableLiveTv>false</EnableLiveTv>
+          <EnableLiveTvManagement>false</EnableLiveTvManagement>
+          <LiveTvRoles />
+          <LiveTvManagementRoles />
+          <FolderRoleMappings />
+          <RoleClaim>groups</RoleClaim>
+          <OidScopes>
+            <string>groups</string>
+          </OidScopes>
+          <PortOverride xsi:nil="true" />
+          <NewPath>false</NewPath>
+          <CanonicalLinks />
+          <DisableHttps>false</DisableHttps>
+          <DisablePushedAuthorization>true</DisablePushedAuthorization>
+          <DoNotValidateEndpoints>false</DoNotValidateEndpoints>
+          <DoNotValidateIssuerName>false</DoNotValidateIssuerName>
+          <DoNotLoadProfile>false</DoNotLoadProfile>
+        </PluginConfiguration>
+      </value>
+    </item>
+  </OidConfigs>
+</PluginConfiguration>

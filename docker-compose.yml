@@ -1,0 +1,47 @@
+services:
+  caddy:
+    image: caddybuilds/caddy-cloudflare:2.11.2-alpine
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - ./secrets.env # CLOUDFLARE_API_TOKEN
+    restart: unless-stopped
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./certs:/usr/local/share/ca-certificates:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
+    command: sh -c "update-ca-certificates && caddy run --config /etc/caddy/Caddyfile"
+    networks:
+      - bridge_net
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    # user: "1002" # Set the user to 1002 (jellyfin)
+    ports:
+      - 8096:8096/tcp
+      - 8920:8920/tcp
+      - 7359:7359/udp
+    volumes:
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      - /hdds/media:/media
+      - /hdds/media2:/media2:ro
+    restart: 'unless-stopped'
+    env_file:
+      - ./jellyfin/vars.env # JELLYFIN_PublishedServerUrl
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      - bridge_net
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  bridge_net:
+    driver: bridge
