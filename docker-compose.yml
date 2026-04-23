@@ -18,6 +18,7 @@ services:
     command: sh -c "update-ca-certificates && caddy run --config /etc/caddy/Caddyfile"
     networks:
       - bridge_net
+
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
@@ -38,9 +39,46 @@ services:
       - 'host.docker.internal:host-gateway'
     networks:
       - bridge_net
+
+  db:
+    image: mariadb:11.8
+    container_name: db
+    restart: always
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file:
+      - ./secrets.env # MYSQL_ROOT_PASSWORD, MYSQL_PASSWORD
+      - ./nextcloud/vars.env # MYSQL_DATABASE, MYSQL_USER
+    networks:
+      - bridge_net
+
+  nextcloud:
+    image: nextcloud:33.0.2
+    container_name: nextcloud
+    restart: always
+    ports:
+      - 8080:80
+      - 8443:443
+      # - 9000:9000
+    links:
+      - db
+    volumes:
+      - nextcloud_data:/var/www/html
+      - /hdds/media2:/var/www/html/data/media
+    env_file:
+      - ./secrets.env # MYSQL_PASSWORD
+      - ./nextcloud/vars.env # MYSQL_DATABASE, MYSQL_USER, MYSQL_HOST
+    depends_on:
+      - db
+    networks:
+      - bridge_net
+
 volumes:
   caddy_data:
   caddy_config:
+  db_data:
+  nextcloud_data:
 
 networks:
   bridge_net:

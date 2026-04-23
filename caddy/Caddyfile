@@ -1,13 +1,12 @@
 {
 	acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
 }
-nextcloud.mgt.zachneill.com {
-	reverse_proxy nextcloud:8080
-}
 jellyfin.mgt.zachneill.com {
   reverse_proxy jellyfin:8096 {
     header_up Host {host}
-    header_up X-Forwarded-Host {host}
     header_up X-Forwarded-Proto https
   }
+}
+nextcloud.mgt.zachneill.com {
+  reverse_proxy nextcloud:80
 }
