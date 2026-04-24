@@ -44,7 +44,7 @@ services:
     image: mariadb:11.8
     container_name: db
     restart: always
-    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW --performance-schema=OFF
     volumes:
       - db_data:/var/lib/mysql
     env_file:
@@ -59,12 +59,11 @@ services:
     restart: always
     ports:
       - 8080:80
-      - 8443:443
-      # - 9000:9000
     links:
       - db
     volumes:
       - nextcloud_data:/var/www/html
+      - ./nextcloud/config/config.php:/var/www/html/config/config.php
       - /hdds/media2:/var/www/html/data/media
     env_file:
       - ./secrets.env # MYSQL_PASSWORD
