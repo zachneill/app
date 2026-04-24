@@ -1,44 +1,43 @@
 <?php
 $CONFIG = array (
-  // Commented out values are automatically generated and differs between instances, specifically instanceid, passwordsalt, secret, and dbpassword 
-  // 'htaccess.RewriteBase' => '/',
-  // 'memcache.local' => '\\OC\\Memcache\\APCu',
-  // 'apps_paths' => 
-  // array (
-  //   0 => 
-  //   array (
-  //     'path' => '/var/www/html/apps',
-  //     'url' => '/apps',
-  //     'writable' => false,
-  //   ),
-  //   1 => 
-  //   array (
-  //     'path' => '/var/www/html/custom_apps',
-  //     'url' => '/custom_apps',
-  //     'writable' => true,
-  //   ),
-  // ),
-  // 'upgrade.disable-web' => true,
-  // 'instanceid' => 'REDACTED',
-  // 'passwordsalt' => 'REDACTED',
-  // 'secret' => 'REDACTED',
-  // 'trusted_domains' => 
-  // array (
-  //   0 => 'nextcloud.mgt.zachneill.com',
-  // ),
-  // 'datadirectory' => '/var/www/html/data',
-  // 'dbtype' => 'mysql',
-  // 'version' => '33.0.2.2',
-  // 'overwrite.cli.url' => 'http://nextcloud.mgt.zachneill.com',
-  // 'dbname' => 'nextcloud',
-  // 'dbhost' => 'db',
-  // 'dbtableprefix' => 'oc_',
-  // 'mysql.utf8mb4' => true,
-  // 'dbuser' => 'nextcloud',
-  // 'dbpassword' => 'REDACTED',
-  // 'installed' => true,
-  // 'allow_user_to_change_display_name' => false,
-  // 'lost_password_link' => 'disabled',
+  'htaccess.RewriteBase' => '/',
+  'memcache.local' => '\\OC\\Memcache\\APCu',
+  'apps_paths' => 
+  array (
+    0 => 
+    array (
+      'path' => '/var/www/html/apps',
+      'url' => '/apps',
+      'writable' => false,
+    ),
+    1 => 
+    array (
+      'path' => '/var/www/html/custom_apps',
+      'url' => '/custom_apps',
+      'writable' => true,
+    ),
+  ),
+  'upgrade.disable-web' => true,
+  'instanceid' => 'REDACTED',
+  'passwordsalt' => 'REDACTED',
+  'secret' => 'REDACTED',
+  'trusted_domains' => 
+  array (
+    0 => 'nextcloud.mgt.zachneill.com',
+  ),
+  'datadirectory' => '/var/www/html/data',
+  'dbtype' => 'mysql',
+  'version' => '33.0.2.2',
+  'overwrite.cli.url' => 'http://nextcloud.mgt.zachneill.com',
+  'dbname' => 'nextcloud',
+  'dbhost' => 'db',
+  'dbtableprefix' => 'oc_',
+  'mysql.utf8mb4' => true,
+  'dbuser' => 'nextcloud',
+  'dbpassword' => 'REDACTED',
+  'installed' => true,
+  'allow_user_to_change_display_name' => false,
+  'lost_password_link' => 'disabled',
   'overwriteprotocol' => 'https',
   'oidc_login_provider_url' => 'https://auth.mgt.zachneill.com',
   'oidc_login_client_id' => 'nextcloud',
