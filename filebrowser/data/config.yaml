@@ -1,0 +1,20 @@
+server:
+  baseURL: /
+  externalURL: https://filebrowser.mgt.zachneill.com
+  cacheDir: /home/filebrowser/data/tmp # using the data volume so it can persist across restarts
+  sources:
+    - path: /folder # Do not use a root "/" directory or include the "/var" folder
+      config:
+        defaultEnabled: true
+auth:
+  methods:
+    password:
+      enabled: false
+    oidc:
+      enabled: true
+      clientId: filebrowser
+      issuerUrl: 'https://auth.mgt.zachneill.com'
+      scopes: 'email openid profile groups'
+      disableVerifyTLS: false
+      logoutRedirectUrl: ''
+      adminGroup: Filebrowser_Admins

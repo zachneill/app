@@ -22,7 +22,6 @@ services:
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
-    # user: "1002" # Set the user to 1002 (jellyfin)
     ports:
       - 8096:8096/tcp
       - 8920:8920/tcp
@@ -32,7 +31,7 @@ services:
       - ./jellyfin/cache:/cache
       - /hdds/media:/media
       - /hdds/media2:/media2:ro
-    restart: 'unless-stopped'
+    restart: unless-stopped
     env_file:
       - ./jellyfin/vars.env # JELLYFIN_PublishedServerUrl
     extra_hosts:
@@ -43,7 +42,7 @@ services:
   db:
     image: mariadb:11.8
     container_name: db
-    restart: always
+    restart: unless-stopped
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW --performance-schema=OFF
     volumes:
       - db_data:/var/lib/mysql
@@ -56,7 +55,7 @@ services:
   nextcloud:
     image: nextcloud:33.0.2
     container_name: nextcloud
-    restart: always
+    restart: unless-stopped
     ports:
       - 8080:80
     links:
@@ -70,6 +69,20 @@ services:
       - ./nextcloud/vars.env # MYSQL_DATABASE, MYSQL_USER, MYSQL_HOST
     depends_on:
       - db
+    networks:
+      - bridge_net
+
+  filebrowser:
+    image: gtstef/filebrowser:1.3.0-stable-slim
+    container_name: filebrowser
+    restart: unless-stopped
+    ports: 
+      - 8081:80
+    env_file:
+      - ./secrets.env # FILEBROWSER_ADMIN_PASSWORD, FILEBROWSER_OIDC_CLIENT_SECRET
+    volumes:
+      - ./filebrowser/data:/home/filebrowser/data
+      - /hdds/media:/folder
     networks:
       - bridge_net
 

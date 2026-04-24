@@ -10,3 +10,9 @@ jellyfin.mgt.zachneill.com {
 nextcloud.mgt.zachneill.com {
   reverse_proxy nextcloud:80
 }
+filebrowser.mgt.zachneill.com {
+  reverse_proxy filebrowser:80 {
+    header_up Host {host}
+    header_up X-Forwarded-Proto https
+  }
+}
