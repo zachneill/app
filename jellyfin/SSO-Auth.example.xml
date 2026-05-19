@@ -9,7 +9,7 @@
       <value>
         <PluginConfiguration>
           <SchemeOverride>https</SchemeOverride>
-          <OidEndpoint>https://auth.mgt.zachneill.com</OidEndpoint>
+          <OidEndpoint>https://auth.aut.zachneill.com</OidEndpoint>
           <OidClientId>jellyfin</OidClientId>
           <OidSecret>REDACTED</OidSecret>
           <Enabled>true</Enabled>

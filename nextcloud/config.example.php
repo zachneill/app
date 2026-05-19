@@ -23,12 +23,12 @@ $CONFIG = array (
   'secret' => 'REDACTED',
   'trusted_domains' => 
   array (
-    0 => 'nextcloud.mgt.zachneill.com',
+    0 => 'nextcloud.aut.zachneill.com',
   ),
   'datadirectory' => '/var/www/html/data',
   'dbtype' => 'mysql',
   'version' => '33.0.2.2',
-  'overwrite.cli.url' => 'http://nextcloud.mgt.zachneill.com',
+  'overwrite.cli.url' => 'http://nextcloud.aut.zachneill.com',
   'dbname' => 'nextcloud',
   'dbhost' => 'db',
   'dbtableprefix' => 'oc_',
@@ -39,7 +39,7 @@ $CONFIG = array (
   'allow_user_to_change_display_name' => false,
   'lost_password_link' => 'disabled',
   'overwriteprotocol' => 'https',
-  'oidc_login_provider_url' => 'https://auth.mgt.zachneill.com',
+  'oidc_login_provider_url' => 'https://auth.aut.zachneill.com',
   'oidc_login_client_id' => 'nextcloud',
   'oidc_login_client_secret' => 'REDACTED',
   'oidc_login_auto_redirect' => false,
